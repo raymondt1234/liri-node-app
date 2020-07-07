@@ -1,14 +1,10 @@
 require("dotenv").config();
-var Spotify = require('node-spotify-api');
 
-var keys = require("./keys.js");
+const Spotify = require("node-spotify-api");
 
-//var spotify = new Spotify(keys.spotify);
+const keys = require("./keys.js");
 
-var spotify = new Spotify({
-    id: "4c34bef2f10a453a84cbe442fe48d606",
-    secret: "41995cd3b2544e30a0003b9cf8857737"
-});
+const spotify = new Spotify(keys.spotify);
 
 function trackSearch(track) {
     let artist;
@@ -36,6 +32,7 @@ function trackSearch(track) {
             console.log(err);
         });
 }
+
 let option = process.argv[2];
 let searchFor = process.argv[3];
 
@@ -43,13 +40,15 @@ switch (option) {
     case "concert-this":
         console.log("concert-this doesn't work yet...");
         break;
+
     case "spotify-this-song":
         trackSearch(searchFor);
         break;
+
     case "movie-this":
         console.log("movie-this doesn't work yet...");
-        
         break;
+
     case "do-what-it-says":
         console.log("do-what-it-says doesn't work yet...");
         break;
