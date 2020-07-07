@@ -17,9 +17,10 @@ function trackSearch(track) {
             let firstResponse = response.tracks.items[0]
             
             artist = firstResponse.artists[0].name;
-            song = firstResponse.album.name;
+            song = firstResponse.name;
             link = firstResponse.external_urls.spotify;
-            album = firstResponse.name;
+            album = firstResponse.album.name;
+
 
             console.log(`
             Artist(s):          ${artist}
