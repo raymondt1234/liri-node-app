@@ -1,6 +1,9 @@
 require("dotenv").config();
 
+
 const Spotify = require("node-spotify-api");
+
+const axios = require("axios");
 
 const keys = require("./keys.js");
 
@@ -29,8 +32,26 @@ function trackSearch(track) {
             Album:              ${album}`);
             
         })
-        .catch(function (err) {
-            console.log(err);
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+function concertThis(band){
+    let url = `https://rest.bandsintown.com/artists/${band}/events?app_id=codingbootcamp`;
+    axios
+        .get(url)
+        .then(function(response){
+            let concerts = response.data;
+            
+            if (concerts.length > 0) {
+                concerts.forEach(function(concert) {
+                    console.log(`       Venue:     ${concert.venue.name}`);
+                    console.log(`       Location:  ${concert.venue.location}`);
+                    console.log(`       Date:      ${concert.datetime}\n`);
+                });
+            } else {
+                console.log("Nothing was found for that Artist/Band.");
+            }
         });
 }
 
@@ -39,7 +60,7 @@ let searchFor = process.argv[3];
 
 switch (option) {
     case "concert-this":
-        console.log("concert-this doesn't work yet...");
+        concertThis(searchFor);
         break;
 
     case "spotify-this-song":
