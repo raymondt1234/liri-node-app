@@ -45,9 +45,9 @@ function concertThis(band){
             
             if (concerts.length > 0) {
                 concerts.forEach(function(concert) {
-                    console.log(`       Venue:     ${concert.venue.name}`);
-                    console.log(`       Location:  ${concert.venue.location}`);
-                    console.log(`       Date:      ${concert.datetime}\n`);
+                    console.log(`\n            Venue:     ${concert.venue.name}`);
+                    console.log(`            Location:  ${concert.venue.location}`);
+                    console.log(`            Date:      ${concert.datetime}`);
                 });
             } else {
                 console.log("Nothing was found for that Artist/Band.");
