@@ -89,13 +89,14 @@ function movieThis(movie) {
 }
 function doWhatItSays() {
     fs.readFile("random.txt", "utf8", function (error, data) {
-        console.log(data);
-
+        
         let dataArr = data.split(",");
-
+        
         let doWhat = dataArr[0];
         let search = dataArr[1];
-
+        
+        console.log(`${doWhat} ${search}`);
+        
         whatOption(doWhat, search);
     });
 }
