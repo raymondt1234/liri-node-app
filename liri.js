@@ -74,14 +74,21 @@ function movieThis(movie) {
             console.log(`IMDb Rating:               ${movieInfo.Ratings[0].Value}`);
             console.log(`Rotten Tomatoes Rating:    ${movieInfo.Ratings[1].Value}`);
             console.log(`Produced in:               ${movieInfo.Country}`);
-            console.log(`Language:                  ${movieInfo.Language}`);
-            console.log(`Actors:                    ${movieInfo.Actors}`);
+            console.log(`Language(s):               ${movieInfo.Language}`);
+            console.log(`Actors/Actresses:          ${movieInfo.Actors}`);
             console.log(`Plot:                      ${movieInfo.Plot}`);
         });
 }
 
 let option = process.argv[2];
-let searchFor = process.argv[3];
+let searchFor = "";
+
+for (let i = 3; i < process.argv.length; i++) {
+    if (i > 3) {
+        searchFor += " ";
+    }
+    searchFor += process.argv[i];
+}
 
 switch (option) {
     case "concert-this":
